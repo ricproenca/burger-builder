@@ -10,7 +10,10 @@
     font: inherit;
     padding: 5px;
     margin: 0 5px;
+    width: 80px;
     border: 1px solid #aa6817;
+    cursor: pointer;
+    outline: none;
 }
 
 .BuildControl button:disabled {
@@ -35,10 +38,6 @@
 .BuildControl .Less {
     background-color: #d39952;
     color: white;
-}
-
-.BuildControl .Less .Disabled {
-    cursor: not-allowed;
 }
 
 .BuildControl .More {
