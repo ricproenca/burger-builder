@@ -23,7 +23,6 @@ class BurgerBuilder extends Component {
         totalPrice: 0,
         purchasable: false,
         purchasing: false,
-        loading: false,
         error: false,
     };
 
@@ -96,43 +95,19 @@ class BurgerBuilder extends Component {
     };
 
     purchasingContinueHandler = () => {
-        const queryString = Object.keys(this.state.ingredients)
-            .map(
-                key =>
-                    `${encodeURIComponent(key)}=${encodeURIComponent(this.state.ingredients[key])}`
-            )
-            .join('&');
+        let queryParams = [];
+        for (let i in this.state.ingredients) {
+            queryParams.push(
+                `${encodeURIComponent(i)}=${encodeURIComponent(this.state.ingredients[i])}`
+            );
+        }
+        queryParams.push(`price=${encodeURIComponent(this.state.totalPrice)}`);
 
+        const queryString = queryParams.join('&');
         this.props.history.push({
-            pathname: '/checkout/',
-            search: queryString,
+            pathname: '/checkout',
+            search: `?${queryString}`,
         });
-
-        // this.setState({ loading: true });
-
-        // const order = {
-        //     ingredients: this.state.ingredients,
-        //     price: this.state.totalPrice,
-        //     customer: {
-        //         name: 'Ricardo',
-        //         address: {
-        //             street: 'My street',
-        //             zipCode: '5875',
-        //             country: 'Luxembourg',
-        //         },
-        //         email: 'ricardo@5875.com',
-        //     },
-        //     deliveryMethod: 'fastest',
-        // };
-
-        // axios
-        //     .post('/orders.json', order)
-        //     .then(response => {
-        //         this.setState({ loading: false, purchasing: false });
-        //     })
-        //     .catch(error => {
-        //         this.setState({ loading: false, purchasing: false });
-        //     });
     };
 
     render() {
@@ -168,10 +143,6 @@ class BurgerBuilder extends Component {
                     purchaseContinued={this.purchasingContinueHandler}
                 />
             );
-        }
-
-        if (this.state.loading) {
-            orderSummary = <Spinner />;
         }
 
         return (
