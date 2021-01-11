@@ -26,18 +26,18 @@ class BurgerBuilder extends Component {
         error: false,
     };
 
-    componentDidMount() {
-        axios
-            .get(
-                'https://react-my-burger-40b8d-default-rtdb.europe-west1.firebasedatabase.app/ingredients.json'
-            )
-            .then(response => {
-                this.setState({ ingredients: response.data });
-            })
-            .catch(error => {
-                this.setState({ error: true });
-            });
-    }
+    // componentDidMount() {
+    //     axios
+    //         .get(
+    //             'https://react-my-burger-40b8d-default-rtdb.europe-west1.firebasedatabase.app/ingredients.json'
+    //         )
+    //         .then(response => {
+    //             this.setState({ ingredients: response.data });
+    //         })
+    //         .catch(error => {
+    //             this.setState({ error: true });
+    //         });
+    // }
 
     addIngredientHandler = type => {
         const oldCount = this.state.ingredients[type];
