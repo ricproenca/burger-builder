@@ -5,12 +5,24 @@ import classes from './Input.module.css';
 const input = props => {
     let inputElement = null;
 
-    switch (props.inputtype) {
+    switch (props.inputType) {
         case 'input':
-            inputElement = <input className={classes.InputElement} {...props} />;
+            inputElement = (
+                <input
+                    className={classes.InputElement}
+                    {...props.elementConfig}
+                    value={props.value}
+                />
+            );
             break;
         default:
-            inputElement = <input className={classes.InputElement} {...props} />;
+            inputElement = (
+                <input
+                    className={classes.InputElement}
+                    {...props.elementConfig}
+                    value={props.value}
+                />
+            );
     }
 
     return (
