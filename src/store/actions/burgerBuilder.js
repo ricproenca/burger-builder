@@ -25,7 +25,6 @@ export const setIngredients = ingredients => {
 export const fetchIngredientsFailed = errorMessage => {
     return {
         type: actionTypes.FETCH_INGREDIENTS_FAILED,
-        error: errorMessage,
     };
 };
 
