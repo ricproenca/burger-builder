@@ -13,23 +13,8 @@ import * as actions from '../../store/actions/';
 
 class BurgerBuilder extends Component {
     state = {
-        purchasable: false,
         purchasing: false,
-        error: false,
     };
-
-    // componentDidMount() {
-    //     axios
-    //         .get(
-    //             'https://react-my-burger-40b8d-default-rtdb.europe-west1.firebasedatabase.app/ingredients.json'
-    //         )
-    //         .then(response => {
-    //             this.setState({ ingredients: response.data });
-    //         })
-    //         .catch(error => {
-    //             this.setState({ error: true });
-    //         });
-    // }
 
     updatePurchasableHandler(ingredients) {
         const sum = Object.keys(ingredients)
