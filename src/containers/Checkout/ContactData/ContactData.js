@@ -96,31 +96,27 @@ class ContactData extends Component {
     };
 
     orderHandler = event => {
-        event.preventDefault();
-
-        this.setState({ loading: true });
-
-        const formData = {};
-        for (let formElementIdentifier in this.state.orderForm) {
-            formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
-        }
-
-        console.log('this.props.ings', this.props.ings);
-        const order = {
-            ingredients: this.props.ings,
-            price: this.props.price,
-            orderData: formData,
-        };
-
-        axios
-            .post('/orders.json', order)
-            .then(response => {
-                this.setState({ loading: false });
-                this.props.history.push('/');
-            })
-            .catch(error => {
-                this.setState({ loading: false });
-            });
+        // event.preventDefault();
+        // this.setState({ loading: true });
+        // const formData = {};
+        // for (let formElementIdentifier in this.state.orderForm) {
+        //     formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
+        // }
+        // console.log('this.props.ings', this.props.ings);
+        // const order = {
+        //     ingredients: this.props.ings,
+        //     price: this.props.price,
+        //     orderData: formData,
+        // };
+        // axios
+        //     .post('/orders.json', order)
+        //     .then(response => {
+        //         this.setState({ loading: false });
+        //         this.props.history.push('/');
+        //     })
+        //     .catch(error => {
+        //         this.setState({ loading: false });
+        //     });
     };
 
     checkValidity(value, rules) {
