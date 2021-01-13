@@ -48,8 +48,8 @@ class ContactData extends Component {
                 value: '',
                 validation: {
                     required: true,
-                    minLength: 5,
-                    maxLength: 5,
+                    minLength: 4,
+                    maxLength: 4,
                 },
                 valid: false,
                 touched: false,
@@ -93,7 +93,6 @@ class ContactData extends Component {
                 valid: true,
             },
         },
-        loading: false,
         formIsValid: false,
     };
 
@@ -183,7 +182,7 @@ class ContactData extends Component {
             </form>
         );
 
-        if (this.state.loading) {
+        if (this.props.loading) {
             form = <Spinner />;
         }
 
@@ -200,12 +199,13 @@ const mapStateToProps = state => {
     return {
         ings: state.ingredients,
         price: state.totalPrice,
+        loading: state.loading,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onOrderBurger: orderData => dispatch(actions.purchaseBurgerStart()),
+        onOrderBurger: orderData => dispatch(actions.purchaseBurger()),
         onOrderBurgerSuccess: () => dispatch(actions.purchaseBurgerSuccess()),
         onOrderBurgerFailed: () => dispatch(actions.purchaseBurgerFailed()),
     };
